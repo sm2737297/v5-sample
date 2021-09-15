@@ -243,11 +243,14 @@ const useStyles = makeStyles((theme) => ({
         background: '#FFFFFF 0% 0% no-repeat padding-box',
         opacity: 1
     },
+
+    //..ACCESS PRIVILEGE
     accessPrivilegeLabel: {
         top: '229px',
         left: '156px',
         width: '166px',
         height: '26px',
+        marginTop: 'inherit',
         font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-24) var(--unnamed-font-family-roboto)",
         letterSpacing: "var(--unnamed-character-spacing-0-15)",
         color: "var(--light-🌕-on-surface-high-emphasis-000000-87-)",
@@ -258,39 +261,19 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'capitalize',
         opacity: 1
     },
-    accessPrivilegeCheckedIconStyle: {
-        top: '238px',
-        left: '120px',
-        width: '20px',
-        height: '20px',
-        marginLeft: '8px',
-        background: "var(--light-🌕-on - primary - high - emphasis - ffffff) 0 % 0 % no - repeat padding - box",
-        background: "#FFFFFF 0 % 0 % no - repeat padding - box",
-        opacity: 1
-    },
-    accessPrivilegeUnCheckIconStyle: {
-        top: '238px',
-        left: '120px',
-        width: '20px',
-        height: '20px',
-        marginLeft: '8px',
-        border: "1px solid var(--dark-🌑-on-primary-disabled-000000-38-)",
-        //border: "1px solid #00000061",
-        opacity: 1
-    },
-    accessPrivilegeBoxStyleUncheck: {
+    accessPrivilegeBoxStyleCheck_View: {
         top: '221px',
         left: '438px',
         width: '143px',
         height: '42px',
-        background: "var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box",
-        border: "1px solid var(--light-🌕-outline-on-surface-000000-12-)",
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        border: '1px solid var(--primary-500-🌕)',
         background: '#FFFFFF 0% 0% no-repeat padding-box',
-        border: '1px solid #0000001F',
+        border: '1px solid #2A4FBC',
         borderRadius: '56px',
         opacity: 1
     },
-    accessPrivilegeBoxStyleCheck: {
+    accessPrivilegeBoxStyleCheck_Theme: {
         top: '221px',
         left: '629px',
         width: '244px',
@@ -301,7 +284,88 @@ const useStyles = makeStyles((theme) => ({
         border: '1px solid #2A4FBC',
         borderRadius: '56px',
         opacity: 1
-    }
+    },
+    accessPrivilegeBoxStyleCheck_Workflow: {
+        top: '221px',
+        left: '921px',
+        width: '260px',
+        height: '42px',
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        border: '1px solid var(--primary-500-🌕)',
+        background: '#FFFFFF 0% 0% no-repeat padding-box',
+        border: '1px solid #2A4FBC',
+        borderRadius: '56px',
+        opacity: 1
+    },
+    accessPrivilegeBoxStyleUnCheck_View: {
+        top: '309px',
+        left: '438px',
+        width: '143px',
+        height: '42px',
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        border: '1px solid var(--light-🌕-outline-on-surface-000000-12-)',
+        background: '#FFFFFF 0% 0% no-repeat padding-box',
+        border: '1px solid #0000001F',
+        borderRadius: '56px',
+        opacity: 1
+    },
+    accessPrivilegeBoxStyleUncheck_Theme: {
+        top: '309px',
+        left: '629px',
+        width: '244px',
+        height: '42px',
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        border: '1px solid var(--light-🌕-outline-on-surface-000000-12-)',
+        background: '#FFFFFF 0% 0% no-repeat padding-box',
+        border: '1px solid #0000001F',
+        borderRadius: '56px',
+        opacity: 1
+    },
+    accessPrivilegeBoxStyleUncheck_Workflow: {
+        top: '309px',
+        left: '921px',
+        width: '260px',
+        height: '42px',
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        border: '1px solid var(--light-🌕-outline-on-surface-000000-12-)',
+        background: '#FFFFFF 0% 0% no-repeat padding-box',
+        border: '1px solid #0000001F',
+        borderRadius: '56px',
+        opacity: 1
+    },
+    accessPrivilegeCheckedIconStyle: {
+        top: '237px',
+        left: '449px',
+        width: '14px',
+        height: '10px',
+        background: 'var(--light-🌕-on-primary-high-emphasis-ffffff) 0% 0% no-repeat padding-box',
+        background: '#FFFFFF 0% 0% no-repeat padding-box',
+        opacity: 1
+    },
+    accessPrivilegeUnCheckIconStyle: {
+        top: '320px',
+        left: '637px',
+        width: '20px',
+        height: '20px',
+        border: '1px solid var(--dark-🌑-on-primary-disabled-000000-38-)',
+        border: '1px solid #00000061',
+        opacity: 1
+    },
+    // accessPrivilegeLabelCheckStyle_Workflow:{
+    //     // top: '320px',
+    //     // left: '957px',
+    //     // width: '181px',
+    //     // height: '19px',
+    //     font: 'var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-roboto)',
+    //     letterSpacing: 'var(--unnamed-character-spacing-0-25)',
+    //     color: 'var(--primary-500-🌕)',
+    //     textAlign: 'left',
+    //     font: 'normal normal normal 14px/20px Roboto',
+    //     letterSpacing: '0.25px',
+    //     color: '#2A4FBC',
+    //     textTransform: 'capitalize',
+    //     opacity: 1
+    // }
 }));
 
 const defaultValues = {
@@ -372,37 +436,55 @@ const dummyModules = [
         id: 1,
         name: 'User Management',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     },
     {
         id: 2,
         name: 'Role Management',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     },
     {
         id: 3,
         name: 'Task Management',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     },
     {
         id: 4,
         name: 'Store Management',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     },
     {
         id: 5,
         name: 'Attendance Management',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     },
     {
         id: 6,
         name: 'Tranining & Quiz',
         status: 'ACTIVE',
-        checked: false
+        checked: false,
+        view: true,
+        editTheme: false,
+        editWorkFlow: false
     }
 ]
 
@@ -421,6 +503,13 @@ export default function Dashboard() {
     const [nextArrowDisabled, setNextArrowDisabled] = React.useState(false);
     const [cancelBtnDisabled, setCancelBtnDisabled] = React.useState(true);
     const [saveAndContinueBtnDisabled, setSaveAndContinueBtnDisable] = React.useState(true);
+    //..MODULES
+    const [cancelBtnDisabled_Modules, setCancelBtnDisabled_Module] = React.useState(true);
+    const [saveAndContinueBtnDisabled_Modules, setSaveAndContinueBtnDisable_Modules] = React.useState(true);
+    //..ACCESS PRIVILEGE
+    const [cancelBtnDisabled_accessPriv, setCancelBtnDisabled_accessPriv] = React.useState(true);
+    const [submitBtnDisabled_accessPriv, setSubmitBtnDisable_accessPriv] = React.useState(true);
+
     const [cities, setCities] = React.useState([]);
 
     const steps = getSteps();
@@ -462,11 +551,16 @@ export default function Dashboard() {
         // }
     };
 
-    const handleSaveAndContinue = () => {
-        //setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleSaveAndContinue = (e, pageSource) => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
         //..axios
+        if (pageSource == "CLIENT") {
+            alert(pageSource);
+        } else if (pageSource == "MODULES") {
+            alert(pageSource);
+        }
         //alert(JSON.stringify(formValues));
-        alert(JSON.stringify(selectedModules));
+        //alert(JSON.stringify(selectedModules));
     };
 
     const handleCanceBtn = (state) => {
@@ -554,26 +648,65 @@ export default function Dashboard() {
         }
     };
 
+    const [modules, setModules] = useState(dummyModules);
+    const handleModules = (e) => {
+        const newModules = [...modules];
+        let smIndex = newModules.findIndex(x => x.id == e.target.name);
+        newModules[smIndex].checked = e.target.checked;
+        setModules(newModules);
+    };
+
+    const handleAccessPrivilegeChange = (e, ap) => {
+        const newModules = [...modules];
+        let smIndex = newModules.findIndex(x => x.id == e.target.name);
+        newModules[smIndex][ap] = e.target.checked;
+        setModules(newModules);
+    };
+
     React.useEffect(() => {
-        //console.log(formValues);
-        if (formValues.clientName
-            && formValues.headOfficeName
-            && formValues.admin.firstName
-            && formValues.admin.lastName
-            && formValues.admin.mobile
-            && formValues.admin.email) {
-            setSaveAndContinueBtnDisable(false);
-            setCancelBtnDisabled(false);
-        } else {
-            setSaveAndContinueBtnDisable(true);
-            setCancelBtnDisabled(true);
+        if (activeStep == 0) { //..CLIENT DETAILS
+            if (formValues.clientName
+                && formValues.headOfficeName
+                && formValues.admin.firstName
+                && formValues.admin.lastName
+                && formValues.admin.mobile
+                && formValues.admin.email) {
+                setSaveAndContinueBtnDisable(false);
+                setCancelBtnDisabled(false);
+            } else {
+                setSaveAndContinueBtnDisable(true);
+                setCancelBtnDisabled(true);
+            }
+        }
+
+        if (activeStep == 1) { //..MODULES
+            let smIndex = modules.findIndex(x => x.checked == true);
+            if (smIndex != -1) {
+                setSaveAndContinueBtnDisable_Modules(false);
+                setCancelBtnDisabled_Module(false);
+            } else {
+                setSaveAndContinueBtnDisable_Modules(true);
+                setCancelBtnDisabled_Module(true);
+            }
+        }
+
+        if (activeStep == 1) { //..ACCESS PRIVILEGE
+            let smIndex = modules.findIndex(x => (x.view == true || x.editTheme == true || x.editWorkFlow == true));
+            if (smIndex != -1) {
+                setSubmitBtnDisable_accessPriv(false);
+                setCancelBtnDisabled_accessPriv(false);
+            } else {
+                setSubmitBtnDisable_accessPriv(true);
+                setCancelBtnDisabled_accessPriv(true);
+            }
         }
     }, [formValues.clientName,
     formValues.headOfficeName,
     formValues.admin.firstName,
     formValues.admin.lastName,
     formValues.admin.mobile,
-    formValues.admin.email]);
+    formValues.admin.email,
+        modules]);
 
 
     const handleSubmit = (event) => {
@@ -609,14 +742,6 @@ export default function Dashboard() {
             }
         }
         setSelectedModules(sm);
-    };
-
-    const [modules, setModules] = useState(dummyModules);
-    const handleModules = (e) => {
-        const newModules = [...modules];
-        let smIndex = newModules.findIndex(x => x.id == e.target.name);
-        newModules[smIndex].checked = e.target.checked;
-        setModules(newModules);
     };
 
     // const [state, setState] = React.useState({
@@ -778,15 +903,15 @@ export default function Dashboard() {
                                     classes={classes}
                                     backArrowDisabled={backArrowDisabled}
                                     nextArrowDisabled={nextArrowDisabled}
-                                    cancelBtnDisabled={cancelBtnDisabled}
-                                    saveAndContinueBtnDisabled={saveAndContinueBtnDisabled}
+                                    cancelBtnDisabled={cancelBtnDisabled_Modules}
+                                    saveAndContinueBtnDisabled={saveAndContinueBtnDisabled_Modules}
                                     handleNextArrow={handleNextArrow}
                                     handleBackArrow={handleBackArrow}
                                     handleSaveAndContinue={handleSaveAndContinue}
                                     handleCanceBtn={handleCanceBtn}
                                     handleSelectedModules={handleSelectedModules}
                                     selectedModules={selectedModules}
-                                    handleModules={handleModules}
+                                    handleModules={handleModules}                                    
                                 />
                             }
                             {
@@ -795,14 +920,18 @@ export default function Dashboard() {
                                     classes={classes}
                                     backArrowDisabled={backArrowDisabled}
                                     nextArrowDisabled={nextArrowDisabled}
-                                    cancelBtnDisabled={cancelBtnDisabled}
-                                    saveAndContinueBtnDisabled={saveAndContinueBtnDisabled}
+                                    cancelBtnDisabled={cancelBtnDisabled_accessPriv}
+                                    submitBtnDisabled={submitBtnDisabled_accessPriv}
+                                    setSubmitBtnDisable={setSubmitBtnDisable_accessPriv}
                                     handleNextArrow={handleNextArrow}
                                     handleBackArrow={handleBackArrow}
                                     handleSaveAndContinue={handleSaveAndContinue}
                                     handleCanceBtn={handleCanceBtn}
                                     selectedModules={selectedModules}
-                                    modules={dummyModules}
+                                    modules={modules}
+                                    handleAccessPrivilegeChange={handleAccessPrivilegeChange}
+                                    handleSubmit={handleSubmit}
+                                    setCancelBtnDisabled={setCancelBtnDisabled_accessPriv}
                                 />
                             }
 

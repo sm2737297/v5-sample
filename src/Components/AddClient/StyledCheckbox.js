@@ -38,7 +38,7 @@ function StyledCheckbox(props) {
                         />}
                         inputProps={{ 'aria-label': 'decorative checkbox' }}
                         onChange={handleChange}
-                        checked={state && state.checked ? true : false}
+                        checked={state}
                     />
                 }
                 className={formControlLabelClass}

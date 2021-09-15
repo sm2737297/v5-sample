@@ -8,14 +8,17 @@ import PropTypes from "prop-types";
 
 function ClientFooter(props) {
     const {
+        isAccessPrivilege,
         backArrowDisabled,
         nextArrowDisabled,
         cancelBtnDisabled,
         saveAndContinueBtnDisabled,
+        setSubmitBtnDisable,
         handleNextArrow,
         handleBackArrow,
         handleSaveAndContinue,
-        handleCanceBtn
+        handleCanceBtn,
+        handleSubmit
     } = props;
     return (
         <Grid
@@ -74,16 +77,16 @@ function ClientFooter(props) {
                             <Button
                                 //style={{ maxWidth: '91px', maxHeight: '35px', minWidth: '91px', minHeight: '35px' }}
                                 disabled>
-                                SAVE & CONTINUE
+                                {isAccessPrivilege ? 'SUBMIT' : 'SAVE & CONTINUE'}
                             </Button>
                             :
                             <Button
                                 variant="contained"
                                 color="primary"
                                 //style={{ maxWidth: '91px', maxHeight: '35px', minWidth: '91px', minHeight: '35px' }}
-                                onClick={handleSaveAndContinue}
+                                onClick={isAccessPrivilege ? handleSubmit : handleSaveAndContinue}
                             >
-                                SAVE & CONTINUE
+                                {isAccessPrivilege ? 'SUBMIT' : 'SAVE & CONTINUE'}
                             </Button>
                     }
                 </Box>

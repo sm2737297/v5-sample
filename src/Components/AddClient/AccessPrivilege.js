@@ -13,15 +13,27 @@ function AccessPrivilege(props) {
         backArrowDisabled,
         nextArrowDisabled,
         cancelBtnDisabled,
-        saveAndContinueBtnDisabled,
+        submitBtnDisabled,
+        setSubmitBtnDisable,
         handleNextArrow,
         handleBackArrow,
         handleSaveAndContinue,
         selectedModules,
         modules,
         classes,
-        handleAccessPrivilege
+        handleAccessPrivilegeChange,
+        handleSubmit,
+        setCancelBtnDisabled
     } = props;
+
+    let smIndex = modules.findIndex(x => (x.checked == true && (x.view == true || x.editTheme == true || x.editWorkFlow == true)));
+    if (smIndex != -1) {
+        setSubmitBtnDisable(false);
+        setCancelBtnDisabled(false);
+    } else {
+        setSubmitBtnDisable(true);
+        setCancelBtnDisabled(true);
+    }
 
     // const sm = modules.filter(m => {
     //     let smIndex = selectedModules.findIndex(x => x.id == m.id);
@@ -86,49 +98,52 @@ function AccessPrivilege(props) {
                                     <InputLabel className={classes.accessPrivilegeLabel}>{module.name}</InputLabel>
                                 </Box>
                                 <StyledCheckbox
-                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    boxClass={module && module.view ? classes.accessPrivilegeBoxStyleCheck_View : classes.accessPrivilegeBoxStyleUnCheck_View}
                                     checkedIconClass={classes.styleCheckedIconStyle}
                                     unCheckedIconClass={classes.styleCheckIconStyle}
-                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    formControlLabelClass={module && module.view ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
                                     key={module.id}
                                     name={module.id}
                                     label={'View'}
-                                    state={module}
-                                    handleChange={handleAccessPrivilege}
+                                    state={module.view}
+                                    handleChange={(e) => handleAccessPrivilegeChange(e, 'view')}
                                 />
                                 <StyledCheckbox
-                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    boxClass={module && module.editTheme ? classes.accessPrivilegeBoxStyleCheck_Theme : classes.accessPrivilegeBoxStyleUncheck_Theme}
                                     checkedIconClass={classes.styleCheckedIconStyle}
                                     unCheckedIconClass={classes.styleCheckIconStyle}
-                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    formControlLabelClass={module && module.editTheme ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
                                     key={module.id}
                                     name={module.id}
                                     label={'Edit Theme Configuration'}
-                                    state={module}
-                                    handleChange={handleAccessPrivilege}
+                                    state={module.editTheme}
+                                    handleChange={(e) => handleAccessPrivilegeChange(e, 'editTheme')}
                                 />
                                 <StyledCheckbox
-                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    boxClass={module && module.editWorkFlow ? classes.accessPrivilegeBoxStyleCheck_Workflow : classes.accessPrivilegeBoxStyleUncheck_Workflow}
                                     checkedIconClass={classes.styleCheckedIconStyle}
                                     unCheckedIconClass={classes.styleCheckIconStyle}
-                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    formControlLabelClass={module && module.editWorkFlow ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
                                     key={module.id}
                                     name={module.id}
                                     label={'Edit Workflow Configuration'}
-                                    state={module}
-                                    handleChange={handleAccessPrivilege}
+                                    state={module.editWorkFlow}
+                                    handleChange={(e) => handleAccessPrivilegeChange(e, 'editWorkFlow')}
                                 />
                             </Grid>
                         </Paper>
                     ))
                 }
-                <ClientFooter backArrowDisabled={backArrowDisabled}
+                <ClientFooter
+                    isAccessPrivilege={true}
+                    backArrowDisabled={backArrowDisabled}
                     nextArrowDisabled={nextArrowDisabled}
                     cancelBtnDisabled={cancelBtnDisabled}
-                    saveAndContinueBtnDisabled={saveAndContinueBtnDisabled}
+                    saveAndContinueBtnDisabled={submitBtnDisabled}
                     handleNextArrow={handleNextArrow}
                     handleBackArrow={handleBackArrow}
                     handleSaveAndContinue={handleSaveAndContinue}
+                    handleSubmit={handleSubmit}
                 />
             </form>
         </div>

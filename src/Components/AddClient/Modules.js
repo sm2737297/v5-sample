@@ -31,7 +31,7 @@ function RenderColumn(props) {
         key={module.id}
         name={module.id}
         label={module.name}
-        state={module}
+        state={module.checked}
         handleChange={handleModules}
     />
     // </Box>
@@ -108,13 +108,15 @@ function Modules(props) {
                     })
                 }
 
-                <ClientFooter backArrowDisabled={backArrowDisabled}
+                <ClientFooter
+                    isAccessPrivilege={false}
+                    backArrowDisabled={backArrowDisabled}
                     nextArrowDisabled={nextArrowDisabled}
                     cancelBtnDisabled={cancelBtnDisabled}
                     saveAndContinueBtnDisabled={saveAndContinueBtnDisabled}
                     handleNextArrow={handleNextArrow}
                     handleBackArrow={handleBackArrow}
-                    handleSaveAndContinue={handleSaveAndContinue}
+                    handleSaveAndContinue={(e) => handleSaveAndContinue(e, 'MODULES')}
                 />
             </form>
         </div>

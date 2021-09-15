@@ -29,7 +29,7 @@ function ClientDetails(props) {
         handleCanceBtn,
         styleObj,
         errorState
-    } = props;    
+    } = props;
     return (
         <div>
 
@@ -41,7 +41,7 @@ function ClientDetails(props) {
                 </Grid>
                 <Grid container direction="row" spacing="3" style={{ paddingBottom: '20px' }}>
                     <Grid item>
-                        <TextField                            
+                        <TextField
                             id="clientName"
                             name="clientName"
                             label="Client Name"
@@ -105,7 +105,7 @@ function ClientDetails(props) {
                             variant="outlined"
                             value={formValues.country}
                             onChange={handleInputChange}
-                            style={styleObj}                            
+                            style={styleObj}
                         />
                     </Grid>
                     <Grid item>
@@ -118,7 +118,7 @@ function ClientDetails(props) {
                             variant="outlined"
                             value={formValues.state}
                             onChange={handleInputChange}
-                            style={styleObj}                            
+                            style={styleObj}
                         >
                             <MenuItem value="">
                                 <em>None</em>
@@ -161,7 +161,7 @@ function ClientDetails(props) {
                             variant="outlined"
                             value={formValues.city}
                             onChange={handleInputChange}
-                            style={styleObj}                            
+                            style={styleObj}
                         >
                             <MenuItem value="">
                                 <em>None</em>
@@ -365,13 +365,15 @@ function ClientDetails(props) {
                     </Grid>
                 </Grid> */}
 
-                <ClientFooter backArrowDisabled={backArrowDisabled}
+                <ClientFooter
+                    isAccessPrivilege={false}
+                    backArrowDisabled={backArrowDisabled}
                     nextArrowDisabled={nextArrowDisabled}
                     cancelBtnDisabled={cancelBtnDisabled}
                     saveAndContinueBtnDisabled={saveAndContinueBtnDisabled}
                     handleNextArrow={handleNextArrow}
                     handleBackArrow={handleBackArrow}
-                    handleSaveAndContinue={handleSaveAndContinue}
+                    handleSaveAndContinue={(e) => handleSaveAndContinue(e, 'CLIENT')}
                     handleCanceBtn={handleCanceBtn}
                 />
             </form>
