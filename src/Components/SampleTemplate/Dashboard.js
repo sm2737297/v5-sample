@@ -37,7 +37,7 @@ import axios from "axios";
 import AccessPrivilege from '../AddClient/AccessPrivilege';
 import Modules from '../AddClient/Modules';
 import StatesCitiesMaster from '../AddClient/states-cities.json';
-
+import SampleCheckboxLabels from '../AddClient/sampleCheckbox';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
     asterisk: {
         color: "red"
     },
-    moduleBoxStyle: {
+    moduleBoxStyleUncheck: {
         top: '227px',
         left: '112px',
         width: '321px',
@@ -171,6 +171,48 @@ const useStyles = makeStyles((theme) => ({
         background: '#FFFFFF 0% 0% no-repeat padding-box',
         border: '1px solid #0000001F',
         borderRadius: '56px',
+        opacity: 1
+    },
+    moduleBoxStyleCheck: {
+        top: '227px',
+        left: '112px',
+        width: '321px',
+        height: '42px',
+        background: "var(--light-🌕-on - primary - high - emphasis - ffffff) 0 % 0 % no - repeat padding - box",
+        border: "1px solid var(--primary - 500 -🌕)",
+        background: "#FFFFFF 0 % 0 % no - repeat padding - box",
+        border: "1px solid #2A4FBC",
+        borderRadius: "56px",
+        opacity: 1
+    },
+    moduleLabelCheckStyle: {
+        //top: '238px',
+        //left: '517px',
+        //width: '117px',
+        //height: '19px',
+        font: "var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-roboto)",
+        letterSpacing: "var(--unnamed-character-spacing-0-25)",
+        color: 'var(--primary-500-🌕)',
+        textAlign: 'left',
+        font: 'normal normal normal 14px/20px Roboto',
+        letterSpacing: '0.25px',
+        color: '#2A4FBC',
+        textTransform: 'capitalize',
+        opacity: 1
+    },
+    moduleLabelUncheckStyle: {
+        // top: '238px',
+        // left: '148px',
+        // width: '118px',
+        // height: '19px',
+        font: 'var(--unnamed- font - style - normal) normal var(--unnamed - font - weight - normal) var(--unnamed - font - size - 14) /var(--unnamed - line - spacing - 20) var(--unnamed - font - family - roboto)',
+        letterSpacing: 'var(--unnamed - character - spacing - 0 - 25)',
+        color: 'var(--light -🌕-on - surface - high - emphasis - 000000 - 87 -)',
+        textAlign: 'left',
+        font: 'normal normal normal 14px / 20px Roboto',
+        letterSpacing: '0.25px',
+        color: '#000000DE',
+        textTransform: 'capitalize',
         opacity: 1
     },
     styleCheckLableStyle: {
@@ -329,32 +371,38 @@ const dummyModules = [
     {
         id: 1,
         name: 'User Management',
-        status: 'INACTIVE'
+        status: 'ACTIVE',
+        checked: false
     },
     {
         id: 2,
         name: 'Role Management',
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        checked: false
     },
     {
         id: 3,
         name: 'Task Management',
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        checked: false
     },
     {
         id: 4,
         name: 'Store Management',
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        checked: false
     },
     {
         id: 5,
         name: 'Attendance Management',
-        status: 'ACTIVE'
+        status: 'ACTIVE',
+        checked: false
     },
     {
         id: 6,
         name: 'Tranining & Quiz',
-        status: 'INACTIVE'
+        status: 'ACTIVE',
+        checked: false
     }
 ]
 
@@ -565,18 +613,45 @@ export default function Dashboard() {
 
     const [modules, setModules] = useState(dummyModules);
     const handleModules = (e) => {
-        const { name, checked } = e.target;
-        let sm = modules;
-        let smIndex = sm.findIndex(x => x.id == name);
-        if (smIndex != -1) {
-            if (checked) {
-                sm[smIndex].checked = true;
-            } else {
-                sm[smIndex].checked = false;
-            }
-        }
-        setModules(sm);
+        const newModules = [...modules];
+        let smIndex = newModules.findIndex(x => x.id == e.target.name);
+        newModules[smIndex].checked = e.target.checked;
+        setModules(newModules);
     };
+
+    // const [state, setState] = React.useState({
+    //     checkedA: true,
+    //     checkedB: true,
+    //     checkedF: true,
+    //     checkedG: true,
+    // });
+
+    const [state, setState] = React.useState([
+        {
+            id: 1,
+            name: 'User Management',
+            status: 'ACTIVE',
+            checked: false
+        }
+    ]);
+
+    const handleChange = (event) => {
+        //setState({ ...state, [event.target.name]: event.target.checked });
+        // let sm = state;
+        // let smIndex = sm.findIndex(x => x.id == event.target.name);
+        // if (smIndex != -1) {
+        //     if (event.target.checked) {
+        //         sm[smIndex].checked = true;
+        //     }
+        // }
+        // setState(sm);
+
+        const newState = [...state];
+        let smIndex = newState.findIndex(x => x.id == event.target.name);
+        newState[smIndex].checked = event.target.checked;
+        setState(newState);
+    };
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -657,6 +732,17 @@ export default function Dashboard() {
                         <Grid item xs={12}>
                             {/* <InputLabel className={classes.formLabel}>Basic details</InputLabel> */}
                             {/* <ClientDetails1/> */}
+                            {/* <SampleCheckboxLabels
+                                classes={classes}
+                                boxClass={state[0] && state[0].checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                checkedIconClass={classes.styleCheckedIconStyle}
+                                unCheckedIconClass={classes.styleCheckIconStyle}
+                                formControlLabelClass={state[0] && state[0].checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                key={1}
+                                name={1}
+                                label={"User Management"}
+                                state={state[0]}
+                                handleChange={handleChange} /> */}
                             {
                                 activeStep == 0 &&
                                 <ClientDetails
@@ -687,7 +773,7 @@ export default function Dashboard() {
                             {
                                 activeStep == 1 &&
                                 <Modules
-                                    modules={dummyModules}
+                                    modules={modules}
                                     columns={3}
                                     classes={classes}
                                     backArrowDisabled={backArrowDisabled}

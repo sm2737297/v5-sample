@@ -4,6 +4,7 @@ import {
 import PropTypes from "prop-types";
 import ClientFooter from './ClientFooter';
 import StyledCheckbox from './StyledCheckbox';
+import SampleCheckboxLabels from './sampleCheckbox';
 
 function RenderColumn(props) {
     const {
@@ -13,24 +14,39 @@ function RenderColumn(props) {
         selectedModules,
         handleModules
     } = props;
-    const smIndex = selectedModules.findIndex(x => x.id == module.id);
-    let checked = false;
-    if (smIndex != -1) {
-        checked = true;
-    }
+    // const smIndex = selectedModules.findIndex(x => x.id == module.id);
+    // let checked = false;
+    // if (smIndex != -1) {
+    //     checked = true;
+    // }
     //alert(module.checked ? true : false);
-    return <Box key={module.id} component="span" m={2}
-        className={classes.moduleBoxStyle}>
-        <StyledCheckbox
-            key={module.id}
-            name={module.id}
-            label={module.name}
-            //checkState={module.checked ? true : false}
-            checkState={checked}
-            classes={classes}
-            handleSelectedModules={handleSelectedModules}
-            handleModules={handleModules} />
-    </Box>
+    //console.log(checked);
+    // return <Box key={module.id} component="span" m={2}
+    //     className={checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}>
+    return <StyledCheckbox
+        boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+        checkedIconClass={classes.styleCheckedIconStyle}
+        unCheckedIconClass={classes.styleCheckIconStyle}
+        formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+        key={module.id}
+        name={module.id}
+        label={module.name}
+        state={module}
+        handleChange={handleModules}
+    />
+    // </Box>
+
+    // return <SampleCheckboxLabels
+    //     classes={classes}
+    //     boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+    //     checkedIconClass={classes.styleCheckedIconStyle}
+    //     unCheckedIconClass={classes.styleCheckIconStyle}
+    //     formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+    //     key={module.id}
+    //     name={module.id}
+    //     label={module.name}
+    //     state={module}
+    //     handleChange={handleModules} />
 }
 
 function Modules(props) {

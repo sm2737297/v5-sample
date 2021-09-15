@@ -19,15 +19,16 @@ function AccessPrivilege(props) {
         handleSaveAndContinue,
         selectedModules,
         modules,
-        classes
+        classes,
+        handleAccessPrivilege
     } = props;
 
-    const sm = modules.filter(m => {
-        let smIndex = selectedModules.findIndex(x => x.id == m.id);
-        if (smIndex != -1) {
-            return m;
-        }
-    });
+    // const sm = modules.filter(m => {
+    //     let smIndex = selectedModules.findIndex(x => x.id == m.id);
+    //     if (smIndex != -1) {
+    //         return m;
+    //     }
+    // });
     //alert(JSON.stringify(sm));
     // const arr = sm.reduce((acc, item) => {
     //     let group = acc.pop();
@@ -77,110 +78,46 @@ function AccessPrivilege(props) {
                     //         </Grid>
                     //     </Paper>
                     // </>
-                    sm && sm.map((m, i) => (
+                    modules && modules.map((module, i) => (
+                        module.checked &&
                         <Paper className={classes.paper} style={{ marginBottom: '20px' }}>
                             <Grid container direction="row" spacing="3">
                                 <Box component="span" m={2}>
-                                    <InputLabel className={classes.accessPrivilegeLabel}>{m.name}</InputLabel>
-
+                                    <InputLabel className={classes.accessPrivilegeLabel}>{module.name}</InputLabel>
                                 </Box>
-                                <Box component="span" m={2} className={classes.accessPrivilegeBoxStyleCheck}>
-                                    {/* <StyledCheckbox
-                                        key={m.id}
-                                        name={m.id}
-                                        label={'View'}
-                                        //checkState={module.checked ? true : false}
-                                        checkState={true}
-                                        classes={classes}
-                                    //handleSelectedModules={handleSelectedModules}
-                                    //handleModules={handleModules} 
-                                    /> */}
-
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                //name={name}
-                                                disableRipple
-                                                color="primary"
-                                                checkedIcon={<CheckCircleIcon
-                                                    className={classes.accessPrivilegeCheckedIconStyle}
-                                                />}
-                                                icon={<RadioButtonUncheckedIcon
-                                                    className={classes.accessPrivilegeUnCheckIconStyle}
-                                                />}
-                                                inputProps={{ 'aria-label': 'decorative checkbox' }}
-                                            //onChange={handleSelectedModules}
-                                            //defaultChecked={checkState}
-                                            />
-                                        }
-                                        label={'View'}
-                                    //key={key}
-                                    />
-                                </Box>
-                                <Box component="span" m={2} className={classes.accessPrivilegeBoxStyleCheck}>
-                                    {/* <StyledCheckbox
-                                        key={m.id}
-                                        name={m.id}
-                                        label={'Edit Theme Configuration'}
-                                        //checkState={module.checked ? true : false}
-                                        checkState={true}
-                                        classes={classes}
-                                    //handleSelectedModules={handleSelectedModules}
-                                    //handleModules={handleModules} 
-                                    /> */}
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                //name={name}
-                                                disableRipple
-                                                color="primary"
-                                                checkedIcon={<CheckCircleIcon
-                                                    className={classes.accessPrivilegeCheckedIconStyle}
-                                                />}
-                                                icon={<RadioButtonUncheckedIcon
-                                                    className={classes.accessPrivilegeUnCheckIconStyle}
-                                                />}
-                                                inputProps={{ 'aria-label': 'decorative checkbox' }}
-                                            //onChange={handleSelectedModules}
-                                            //defaultChecked={checkState}
-                                            />
-                                        }
-                                        label={'Edit Theme Configuration'}
-                                    //key={key}
-                                    />
-                                </Box>
-                                <Box component="span" m={2} className={classes.accessPrivilegeBoxStyleCheck}>
-                                    {/* <StyledCheckbox
-                                        key={m.id}
-                                        name={m.id}
-                                        label={'Edit Workflow Configuration'}
-                                        //checkState={module.checked ? true : false}
-                                        checkState={true}
-                                        classes={classes}
-                                    //handleSelectedModules={handleSelectedModules}
-                                    //handleModules={handleModules} 
-                                    /> */}
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                //name={name}
-                                                disableRipple
-                                                color="primary"
-                                                checkedIcon={<CheckCircleIcon
-                                                    className={classes.accessPrivilegeCheckedIconStyle}
-                                                />}
-                                                icon={<RadioButtonUncheckedIcon
-                                                    className={classes.accessPrivilegeUnCheckIconStyle}
-                                                />}
-                                                inputProps={{ 'aria-label': 'decorative checkbox' }}
-                                            //onChange={handleSelectedModules}
-                                            //defaultChecked={checkState}
-                                            />
-                                        }
-                                        label={'Edit Workflow Configuration'}
-                                    //key={key}
-                                    />
-                                </Box>
+                                <StyledCheckbox
+                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    checkedIconClass={classes.styleCheckedIconStyle}
+                                    unCheckedIconClass={classes.styleCheckIconStyle}
+                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    key={module.id}
+                                    name={module.id}
+                                    label={'View'}
+                                    state={module}
+                                    handleChange={handleAccessPrivilege}
+                                />
+                                <StyledCheckbox
+                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    checkedIconClass={classes.styleCheckedIconStyle}
+                                    unCheckedIconClass={classes.styleCheckIconStyle}
+                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    key={module.id}
+                                    name={module.id}
+                                    label={'Edit Theme Configuration'}
+                                    state={module}
+                                    handleChange={handleAccessPrivilege}
+                                />
+                                <StyledCheckbox
+                                    boxClass={module && module.checked ? classes.moduleBoxStyleCheck : classes.moduleBoxStyleUncheck}
+                                    checkedIconClass={classes.styleCheckedIconStyle}
+                                    unCheckedIconClass={classes.styleCheckIconStyle}
+                                    formControlLabelClass={module && module.checked ? classes.moduleLabelCheckStyle : classes.moduleLabelUncheckStyle}
+                                    key={module.id}
+                                    name={module.id}
+                                    label={'Edit Workflow Configuration'}
+                                    state={module}
+                                    handleChange={handleAccessPrivilege}
+                                />
                             </Grid>
                         </Paper>
                     ))

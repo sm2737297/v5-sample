@@ -1,14 +1,16 @@
+import React from 'react';
 import {
-    Checkbox, FormControlLabel, Box
+    Box
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import PropTypes from "prop-types";
-import checkIcon from './../../assets/img/Check.svg';
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-function StyledCheckbox(props) {
+export default function SampleCheckboxLabels(props) {
     const {
         boxClass,
         checkedIconClass,
@@ -20,8 +22,9 @@ function StyledCheckbox(props) {
         state,
         handleChange
     } = props;
-    console.log(JSON.stringify(module));
+    //console.log(JSON.stringify(state));
     return (
+        // <FormGroup row>
         <Box key={key} component="span" m={2}
             className={boxClass}>
             <FormControlLabel
@@ -46,16 +49,6 @@ function StyledCheckbox(props) {
                 key={key}
             />
         </Box>
+        // </FormGroup>
     );
 }
-
-StyledCheckbox.propTypes = {
-    label: PropTypes.string.isRequired,
-    classes: PropTypes.object.isRequired
-}
-
-StyledCheckbox.defaultProps = {
-
-};
-
-export default StyledCheckbox;
